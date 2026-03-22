@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>login page</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    
+        <div id="container">
+            <div class="ct">
+        <h1>Login</h1>
+       
+       Please login to use the platform 
+       <br>
+       <div class="in">
+     <input type="Password" placeholder="Password" id="Password">
+     </div>  </div>
+     <p style="margin-left: 9%;">
+     Forgot Password?
+       </p>
+       <br> 
+       <input type="checkbox" value="I agree to terms and conditions." style="margin-left:10% ; margin-right: 1%;  margin-top: 1;" id="agree"> I agree to terms and
+        conditions.
+    <div id="btns">
+     <button onclick="location.href='login.html'">Back</button>
+        <button type="submit" id="submit" disabled>Submit</button>
+        </div>
+    
+    </div>
+    <script >
+         let password = document.getElementById('Password')
+    let checkbox = document.getElementById('agree')
+        let sub = document.getElementById('submit')
+
+        
+        checkbox.addEventListener('change', () => {
+            if (checkbox.checked && password.value!== "") {
+               sub.disabled=false; 
+            } else {
+                sub.disabled = true;
+            }
+        });
+        
+        
+       
+
+        password.addEventListener('keyup', () => {
+            if (password.value !== "" && checkbox.checked) {
+               sub.disabled=false; 
+            } else {
+                sub.disabled = true;
+            }
+        });
+       
+</script>
+</body>
+</html>
