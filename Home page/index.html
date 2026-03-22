@@ -1,26 +1,54 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SAFAR</title>
     <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 </head>
+
 <body>
-    <nav class ="navbar">
-        <h2 class ="logo">SAFAR</h2>
-        <u1>
-            <li>Home</li>
-            <li>Services</li>
-        </u1>
+    <nav class="navbar">
+        <h2 class="logo">SAFAR</h2>
+        <ul class="top-list">
+            <li><span style="margin-right: 5px;"><i class="fa-solid fa-house"></i></span>Home</li>
+            <li><span style="margin-right: 5px;"><i class="fa-solid fa-train-subway"></i></span>Services</li>
+            <li><span style="margin-right: 5px;"><i class="fa-solid fa-address-card"></i></span>About</li>
+            <li><span style="margin-right: 5px;"><i class="fa-solid fa-phone"></i></span>Contact</li>
+        </ul>
     </nav>
 
-    <section class ="home">
+    <section class="home">
         <h1> PLAN YOUR JOURNEY WITH US</h1>
         <p> Search trains and book your journey today!</p>
         <div class="buttons">
             <button class="btn">Know More</button>
-            <button class="btn">Book Now</button>
+            <button class="btn" id="book-now-btn">Book Now</button>
+        </div>
+
+        <!-- Booking Modal -->
+        <div id="booking-modal" class="modal">
+            <div class="modal-content">
+                <span class="close-btn">&times;</span>
+                <h2>Book Your Train</h2>
+                <div class="form-group autocomplete">
+                    <label for="from-station"><i class="fa-solid fa-location-arrow"></i> From</label>
+                    <input type="text" id="from-station" placeholder="From" autocomplete="off">
+                    <div id="from-autocomplete-list" class="autocomplete-items"></div>
+                </div>
+                <div class="form-group autocomplete">
+                    <label for="to-station"><i class="fa-solid fa-location-dot"></i> To</label>
+                    <input type="text" id="to-station" placeholder="To" autocomplete="off">
+                    <div id="to-autocomplete-list" class="autocomplete-items"></div>
+                </div>
+                <div class="form-group">
+                    <label for="journey-date"><i class="fa-solid fa-calendar-days"></i> Date of Journey</label>
+                    <input type="date" id="journey-date">
+                </div>
+                <button class="btn search-btn">Search Trains</button>
+            </div>
         </div>
     </section>
 
@@ -29,10 +57,68 @@
         <p>This system allows users to search for trains and book their journeys with ease.</p>
     </section>
 
-    <footer class="footer">
-        <span class="contact">Contact</span>
-        <div class="info">Safar123journey@gmail.com | +91 9XX34XX56XX</div>
+    <footer class="site-footer">
+        <div class="footer-container">
+            <div class="footer-brand">
+                <h2 class="footer-logo">SAFAR</h2>
+                <p>SAFAR is official partner of IRCTC to book IRCTC train tickets and Railway train enquiry</p>
+            </div>
+
+            <div class="footer-links">
+                <div class="footer-column">
+                    <h4>Book</h4>
+                    <ul>
+                        <li><a href="#">IRCTC Tickets</a></li>
+                        <li><a href="#">Flights</a></li>
+                        <li><a href="#">Hotels</a></li>
+                        <li><a href="#">Order Food on Train</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-column">
+                    <h4>Features</h4>
+                    <ul>
+                        <li><a href="#">PNR Status</a></li>
+                        <li><a href="#">Train Running Status</a></li>
+                        <li><a href="#">Train Schedule</a></li>
+                        <li><a href="#">IRCTC Aadhaar Link</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-column">
+                    <h4>About SAFAR</h4>
+                    <ul>
+                        <li><a href="#">Contact Us</a></li>
+                        <li><a href="#">Media Kit</a></li>
+                        <li><a href="#">Alliances</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-column">
+                    <h4>Legal</h4>
+                    <ul>
+                        <li><a href="#">Privacy Policy</a></li>
+                        <li><a href="#">Terms & Conditions</a></li>
+                        <li><a href="#">Alternate Travel Plan</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-column">
+                    <h4>Follow us</h4>
+                    <div class="social-icons">
+                        <a href="#"><i class="fa-brands fa-square-instagram"></i></a> <a href="#"><i
+                                class="fa-brands fa-square-facebook"></i></a> <a href="#"><i
+                                class="fa-brands fa-square-x-twitter"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>made with ❤️ &copy; Copyright by SAFAR. All Rights Reserved.</p>
+        </div>
     </footer>
 
+    <script src="script.js"></script>
 </body>
+
 </html>
