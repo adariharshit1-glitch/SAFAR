@@ -60,6 +60,9 @@ body {
     display: flex;
     justify-content: flex-start;   
 }
+.row:nth-child(2n) {
+    margin-bottom: 25px;
+}
 
 .seat {
     width: 40px;
@@ -125,4 +128,76 @@ body {
     color: white;
     border: none;
     cursor: pointer;
+}
+
+@media (max-width: 1024px) {
+
+    .main {
+        flex-direction: column;
+        width: 100%;
+        margin-left: 0;
+        padding: 20px;
+    }
+
+    .right {
+        position: static; 
+        width: 100%;
+        margin-top: 20px;
+    }
+
+    body {
+        padding-left: 0;
+    }
+}
+
+@media (max-width: 768px) {
+
+    .classes {
+        display: flex;
+        flex-wrap: wrap; 
+        gap: 10px;
+    }
+
+    .classes button {
+        flex: 1 1 45%;  
+    }
+
+    .seat {
+        width: 32px;
+        height: 32px;
+        margin: 4px;
+        font-size: 12px;
+    }
+
+    .right {
+        font-size: 14px;
+        padding: 15px;
+    }
+
+    .popup-content {
+        width: 90%;
+    }
+}
+
+@media (max-width: 480px) {
+
+    .seat {
+        width: 28px;
+        height: 28px;
+        margin: 3px;
+        font-size: 10px;
+    }
+
+    .classes button {
+        flex: 1 1 100%;
+    }
+
+    .confirm {
+        font-size: 14px;
+        padding: 10px;
+    }
+
+    .right p {
+        font-size: 14px;
+    }
 }
