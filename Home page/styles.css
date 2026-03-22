@@ -1,0 +1,92 @@
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background-color: #e8decf;
+    overflow-x: hidden;
+}
+
+.logo {
+    font-size: 24px;
+    font-weight: bold;
+    letter-spacing: 2px;
+}
+
+.navbar {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    padding: 20px 40px;
+    color: white;
+    box-sizing: border-box;
+}
+
+.navbar ul {
+    list-style: none;
+    display: flex;
+    gap: 30px;
+    margin: 0;
+    padding: 0;
+}
+
+.navbar li {
+    cursor: pointer;
+}
+
+.home {
+    height: 100vh;
+    background: linear-gradient(
+        rgba(0,0,0,0.6),
+        rgba(0,0,0,0.6)
+    ),url("bg.jpg") no-repeat center/cover;
+
+    color: rgb(234, 220, 207);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.home h1 {
+    font-size: 48px;
+    margin-bottom: 10px;
+}
+
+.home p{
+    font-size: 18px;
+    margin-bottom: 20px;
+}
+
+.buttons {
+    margin-top: 25px;
+}
+
+.btn {
+    padding: 12px 28px;
+    margin: 5px;
+    border: none;
+    border-radius: 5px;
+    background: #ff9800;
+    color: white;
+    cursor: pointer;
+    font-size: 16px;
+    transition: 0.3s;
+}
+
+.btn:hover{
+    background: #e68900;
+}
+
+.about {
+    padding: 50px;
+    text-align: center;
+}
+.footer{margin-top:40px;position:relative}
+.footer .info{opacity:0;position:absolute}
+.footer .contact:hover + .info{opacity:1}
