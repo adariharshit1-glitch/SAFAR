@@ -6,8 +6,6 @@ document.addEventListener("DOMContentLoaded", () => {
     const toInput = document.getElementById("to-station");
 
     let stationsData = [];
-
-    // Fetch stations data
     fetch('stations.json')
         .then(response => response.json())
         .then(data => {
@@ -15,12 +13,9 @@ document.addEventListener("DOMContentLoaded", () => {
         })
         .catch(err => console.error("Error loading stations data:", err));
 
-    // Open modal
     bookNowBtn.addEventListener("click", () => {
         modal.style.display = "block";
     });
-
-    // Close modal
     closeBtn.addEventListener("click", () => {
         modal.style.display = "none";
     });
@@ -31,7 +26,7 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     });
 
-    // Autocomplete function
+
     function autocomplete(inputElement, listElementId) {
         inputElement.addEventListener("input", function () {
             let val = this.value;
@@ -46,11 +41,10 @@ document.addEventListener("DOMContentLoaded", () => {
                 let searchStr = val.toUpperCase();
 
                 if (stationName.toUpperCase().includes(searchStr) || stationCode.toUpperCase().includes(searchStr)) {
-                    if (count >= 5) break; // Limit suggestions
+                    if (count >= 5) break;
                     count++;
                     let itemDiv = document.createElement("DIV");
 
-                    // Highlight matching parts
                     itemDiv.innerHTML = `${stationName} (<strong>${stationCode}</strong>)`;
 
                     itemDiv.addEventListener("click", function () {
@@ -62,7 +56,6 @@ document.addEventListener("DOMContentLoaded", () => {
             }
         });
 
-        // Close lists if clicking outside
         document.addEventListener("click", function (e) {
             if (e.target !== inputElement) {
                 document.getElementById(listElementId).innerHTML = "";
