@@ -3,15 +3,22 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Searching</title>
+    <title>Search Trains</title>
+    <link rel="stylesheet"    href="searchpagestyle.css">
 </head>
 <body>
-    <div>
-        <h2>Train Search</h2>
-        <input type="text" placeholder="From station ">
-        <input type="text" placeholder="To station">
-        <input type="date" placeholder="Enter Date">
-        <button>Find Trains</button>
+    <div id="box">
+        <h3>Search Trains</h3><br>
+        <p>Enter your Details to find available trains</p><br>
+    <div id="train"> 
+        <input type="text" placeholder="From station " id="from">
+        <input type="text" placeholder="To station" id="to">
+    </div><br>
+        <input type="date" placeholder="Enter Date" id="dt">
+        <button type="button"  onclick="searchTrains()" id="butn" >Find Trains</button>
+         
+        
     </div>
+    <script src="script.js"></script>
 </body>
 </html>
