@@ -63,7 +63,7 @@ function toggleSeat(seat) {
     let num = seat.innerText;
 
     if (selectedSeats.includes(num)) {
-        selectedSeats = selectedSeats.filter(function(s) {
+        selectedSeats = selectedSeats.filter(function (s) {
             return s != num;
         });
 

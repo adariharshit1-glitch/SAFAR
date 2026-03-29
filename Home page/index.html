@@ -18,17 +18,23 @@
             <li><span style="margin-right: 5px;"><i class="fa-solid fa-address-card"></i></span>About</li>
             <li><span style="margin-right: 5px;"><i class="fa-solid fa-phone"></i></span>Contact</li>
         </ul>
+        <a href="../login page/login.html" style="text-decoration: none;">
+            <button class="btn"
+                style="padding: 10px 20px; font-size: 16px; display: flex; align-items: center; gap: 8px;">
+                <i class="fa-solid fa-user"></i> Login / Logout
+            </button>
+        </a>
     </nav>
 
     <section class="home">
-        <h1> PLAN YOUR JOURNEY WITH US</h1>
+        <div class="text-container">
+            <h1 class="text"> PLAN YOUR JOURNEY WITH US</h1>
+        </div>
         <p> Search trains and book your journey today!</p>
         <div class="buttons">
             <button class="btn">Know More</button>
             <button class="btn" id="book-now-btn">Book Now</button>
         </div>
-
-        <!-- Booking Modal -->
         <div id="booking-modal" class="modal">
             <div class="modal-content">
                 <span class="close-btn">&times;</span>
@@ -47,14 +53,39 @@
                     <label for="journey-date"><i class="fa-solid fa-calendar-days"></i> Date of Journey</label>
                     <input type="date" id="journey-date">
                 </div>
-                <button class="btn search-btn">Search Trains</button>
+                <a href="../seat selection/index.html"><button class="btn search-btn">Search Trains</button></a>
             </div>
         </div>
     </section>
 
     <section class="about">
-        <h2>About Us</h2>
-        <p>This system allows users to search for trains and book their journeys with ease.</p>
+        <h1>Other Services</h1>
+        <div class="services">
+            <div class="service-card">
+                <div class="service-link"><a href="#"><i class="fa-solid fa-bowl-food"></i></a></div>
+                <p>Order Food on Train</p>
+            </div>
+            <div class="service-card">
+                <div class="service-link"><a href="#"><i class="fa-solid fa-ticket"></i></a></div>
+                <p>PNR Status</p>
+            </div>
+            <div class="service-card">
+                <div class="service-link"><a href="#"><i class="fa-solid fa-train"></i></a></div>
+                <p>Train Status</p>
+            </div>
+            <div class="service-card">
+                <div class="service-link"><a href="#"><i class="fa-solid fa-couch"></i></a></div>
+                <p>Seat Availability</p>
+            </div>
+            <div class="service-card">
+                <div class="service-link"><a href="#"><i class="fa-solid fa-location-arrow"></i></a></div>
+                <p>Live Location</p>
+            </div>
+            <div class="service-card">
+                <div class="service-link"><a href="#"><i class="fa-solid fa-calendar-days"></i></a></div>
+                <p>Train Schedule</p>
+            </div>
+        </div>
     </section>
 
     <footer class="site-footer">

@@ -1,4 +1,4 @@
- document.addEventListener("DOMContentLoaded", () => {
+document.addEventListener("DOMContentLoaded", () => {
     const modal = document.getElementById("booking-modal");
     const bookNowBtn = document.getElementById("book-now-btn");
     const closeBtn = document.querySelector(".close-btn");
@@ -42,10 +42,10 @@
                 let searchStr = val.toUpperCase();
 
                 if (stationName.toUpperCase().includes(searchStr) || stationCode.toUpperCase().includes(searchStr)) {
-                    if (count >= 5) break; 
+                    if (count >= 5) break;
                     count++;
                     let itemDiv = document.createElement("DIV");
-                    
+
                     itemDiv.innerHTML = `${stationName} (<strong>${stationCode}</strong>)`;
 
                     itemDiv.addEventListener("click", function () {

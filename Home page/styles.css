@@ -18,6 +18,7 @@ body {
     top: 0;
     left: 0;
     width: 100%;
+    z-index: 10;
 
     display: flex;
     justify-content: space-between;
@@ -71,6 +72,9 @@ body {
     justify-content: center;
     align-items: center;
     text-align: center;
+    width: 100%;
+    animation: fadebackground 1s ease-in-out forwards;
+
 }
 
 .home h1 {
@@ -112,6 +116,7 @@ body {
     padding: 50px;
     text-align: center;
 }
+
 
 .site-footer {
     background-color: #e8decf;
@@ -209,6 +214,7 @@ body {
     font-size: 13px;
 }
 
+
 .modal {
     display: none;
     position: fixed;
@@ -236,6 +242,80 @@ body {
     top: -50px;
     animation: modalSlideIn 0.4s forwards;
 
+}
+
+.services {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 50px;
+    max-width: 1000px;
+    margin: 40px auto;
+}
+
+.service-card {
+    width: 200px;
+    height: 200px;
+    border-radius: 10px;
+    background-color: #fdfbf7;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.service-card a {
+    text-decoration: none;
+    color: black;
+    font-size: 1.8rem;
+}
+
+.service-card p {
+    font-weight: 600;
+}
+
+.service-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.12);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.service-card:hover a {
+    color: #ff9800;
+    transition: color 0.3s ease;
+}
+
+.service-card:hover i {
+    transform: scale(1.15);
+    transition: transform 0.3s ease;
+}
+
+.service-card:hover .service-link {
+    background-color: #e8decf;
+    transition: background-color 1s ease;
+}
+
+.service-link {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.service-link:hover {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    color: #ff9800;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 @keyframes modalSlideIn {
@@ -297,6 +377,7 @@ body {
     padding: 14px;
 }
 
+
 .autocomplete {
     position: relative;
 }
@@ -341,4 +422,50 @@ body {
 
 .social-icons i {
     font-size: 1.7rem;
+}
+
+.text {
+    width: 0;
+    overflow: hidden;
+    animation: typing 2s steps(27) forwards;
+    white-space: nowrap;
+}
+
+.navbar,
+.home p,
+.home button,
+.about {
+    opacity: 0;
+    animation: remaining 1.3s ease-in forwards;
+    animation-delay: 2s;
+}
+
+@keyframes fadebackground {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes typing {
+    from {
+        width: 0;
+    }
+
+    to {
+        width: 100%;
+    }
+}
+
+@keyframes remaining {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
 }

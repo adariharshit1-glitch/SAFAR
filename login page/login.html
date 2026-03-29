@@ -1,63 +1,64 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>SAFAR Login</title>
-<link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SAFAR Login</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
-<div class="container">
+    <div class="container">
 
-    <h2 class="brand">SAFAR</h2>
+        <h2 class="brand">SAFAR</h2>
 
-    <div id="step1" class="card active">
-        <h1>Login</h1>
-        <p class="subtitle">Welcome Back! Ready for your next adventure?</p>
+        <div id="step1" class="card active">
+            <h1>Login</h1>
+            <p class="subtitle">Welcome Back! Ready for your next adventure?</p>
 
-        <div class="input-group">
-            <label>Enter your User Name</label>
-            <input type="text" id="name" placeholder="Enter your name">
+            <div class="input-group">
+                <label>Enter your User Name</label>
+                <input type="text" id="name" placeholder="Enter your name">
+            </div>
+
+            <p class="warning">⚠ Warning: Might cause acute railway love!</p>
+
+            <div class="btns">
+                <button class="secondary">Create Account</button>
+                <button id="nextBtn" disabled>Next</button>
+            </div>
         </div>
 
-        <p class="warning">⚠ Warning: Might cause acute railway love!</p>
+        <!-- STEP 2 -->
+        <div id="step2" class="card">
+            <h1>Welcome</h1>
+            <p id="userName"></p>
 
-        <div class="btns">
-            <button class="secondary">Create Account</button>
-            <button id="nextBtn" disabled>Next</button>
+            <div class="input-group">
+                <label>Enter your password</label>
+                <input type="password" id="password">
+            </div>
+
+            <div class="checkbox">
+                <input type="checkbox" id="agree">
+                <label>I agree to terms & conditions</label>
+            </div>
+
+            <div class="checkbox">
+                <input type="checkbox" id="showPass">
+                <label>Show password</label>
+            </div>
+            <div class="btns">
+                <button id="backBtn" class="secondary">Back</button>
+                <a href="../Home page/index.html"><button id="loginBtn" disabled>Login</button></a>
+            </div>
         </div>
+
     </div>
 
-    <!-- STEP 2 -->
-    <div id="step2" class="card">
-        <h1>Welcome</h1>
-        <p id="userName"></p>
-
-        <div class="input-group">
-            <label>Enter your password</label>
-            <input type="password" id="password">
-        </div>
-
-        <div class="checkbox">
-            <input type="checkbox" id="agree">
-            <label>I agree to terms & conditions</label>
-        </div>
-
-        <div class="checkbox">
-            <input type="checkbox" id="showPass">
-            <label>Show password</label>
-        </div>
-
-        <div class="btns">
-            <button id="backBtn" class="secondary">Back</button>
-            <button id="loginBtn" disabled>Login</button>
-        </div>
-    </div>
-
-</div>
-
-<script src="script.js"></script>
+    <script src="script.js"></script>
 </body>
+
 </html>

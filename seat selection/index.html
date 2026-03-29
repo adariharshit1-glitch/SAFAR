@@ -1,51 +1,54 @@
 <!DOCTYPE html>
 <html>
+
 <head>
     <title>Seat Selection</title>
     <link rel="stylesheet" href="styles.css">
 </head>
+
 <body>
 
-<div class="main">
+    <div class="main">
 
-    <div class="left">
-        <div class="classes">
-            <button onclick="selectClass('1AC')">1AC</button>
-            <button onclick="selectClass('2AC')">2AC</button>
-            <button onclick="selectClass('3AC')">3AC</button>
-            <button onclick="selectClass('Sleeper')">Sleeper</button>
-            <button onclick="selectClass('General')">General</button>
+        <div class="left">
+            <div class="classes">
+                <button onclick="selectClass('1AC')">1AC</button>
+                <button onclick="selectClass('2AC')">2AC</button>
+                <button onclick="selectClass('3AC')">3AC</button>
+                <button onclick="selectClass('Sleeper')">Sleeper</button>
+                <button onclick="selectClass('General')">General</button>
+            </div>
+
+            <div id="seatContainer"></div>
         </div>
 
-        <div id="seatContainer"></div>
-    </div>
+        <div class="right">
+            <p>Selected Seats:</p>
+            <p id="seatList">None</p>
 
-    <div class="right">
-        <p>Selected Seats:</p>
-        <p id="seatList">None</p>
+            <p>Total Fare:</p>
+            <p>₹<span id="totalFare">0</span></p>
 
-        <p>Total Fare:</p>
-        <p>₹<span id="totalFare">0</span></p>
-
-        <button type="button" class="confirm" onclick="confirmBooking()">Continue</button>
-    </div>
-
-    <div id="popup" class="popup">
-        <div class="popup-content">
-
-            <h2>Booking Confirmed!</h2>
-
-            <p id="popupSeats"></p>
-            <p id="popupClass"></p>
-            <p id="popupFare"></p>
-
-            <button onclick="closePopup()">OK</button>
-
+            <button type="button" class="confirm" onclick="confirmBooking()">Continue</button>
         </div>
+
+        <div id="popup" class="popup">
+            <div class="popup-content">
+
+                <h2>Booking Confirmed!</h2>
+
+                <p id="popupSeats"></p>
+                <p id="popupClass"></p>
+                <p id="popupFare"></p>
+
+                <button onclick="closePopup()">OK</button>
+
+            </div>
+        </div>
+
     </div>
 
-</div>
-
-<script src="seat.js"></script>
+    <script src="seat.js"></script>
 </body>
+
 </html>
