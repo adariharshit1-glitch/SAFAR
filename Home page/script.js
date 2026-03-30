@@ -4,7 +4,6 @@ document.addEventListener("DOMContentLoaded", () => {
     const closeBtn = document.querySelector(".close-btn");
     const fromInput = document.getElementById("from-station");
     const toInput = document.getElementById("to-station");
-
     let stationsData = [];
 
     fetch('stations.json')
@@ -66,4 +65,25 @@ document.addEventListener("DOMContentLoaded", () => {
 
     autocomplete(fromInput, "from-autocomplete-list");
     autocomplete(toInput, "to-autocomplete-list");
+    
+    const submitBtn = document.getElementById("submitBtn");
+    const dateInput = document.getElementById("journey-date");
+
+    submitBtn.addEventListener("click", () => {
+        const searchData = {
+            from: fromInput.value,
+            to: toInput.value,
+            date: dateInput.value
+        };
+
+        if(!searchData.from || !searchData.to || !searchData.date) {
+            alert("Please select both stations and a date.");
+            window.location.href = "../Home page/index.html";
+            return; 
+        }
+
+        localStorage.setItem("JourneyAlpha", JSON.stringify(searchData));
+
+    });
 });
+
