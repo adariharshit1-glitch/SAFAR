@@ -440,6 +440,9 @@ body {
     animation-delay: 2s;
 }
 
+#results{
+
+}
 @keyframes fadebackground {
     from {
         opacity: 0;

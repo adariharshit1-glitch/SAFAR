@@ -68,21 +68,24 @@ document.addEventListener("DOMContentLoaded", () => {
     
     const submitBtn = document.getElementById("submitBtn");
     const dateInput = document.getElementById("journey-date");
-
+    //convert user input to station code
     submitBtn.addEventListener("click", () => {
-        const searchData = {
+        const userData = {
             from: fromInput.value,
             to: toInput.value,
             date: dateInput.value
         };
 
-        if(!searchData.from || !searchData.to || !searchData.date) {
+        if(!userData.from || !userData.to || !userData.date) {
             alert("Please select both stations and a date.");
             window.location.href = "../Home page/index.html";
             return; 
         }
+        else{
+            window.location.href = "../rEsult pAge/result.html";
+        }
 
-        localStorage.setItem("JourneyAlpha", JSON.stringify(searchData));
+        localStorage.setItem("JourneyAlpha", JSON.stringify(userData));
 
     });
 });
