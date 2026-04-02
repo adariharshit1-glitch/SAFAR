@@ -16,7 +16,9 @@ function getDayName(dateStr){
 
     return dayName;
 }
-function displayTrains(){
+const results = document.getElementById('results');
+findTrains();
+function findTrains(){
     let i,j,k;
     const userData = JSON.parse(localStorage.getItem("journeyAlpha"));
     for(i=0; i<allTrains.length; i++){
@@ -35,6 +37,12 @@ function displayTrains(){
                             for(let l=0; l<allTrains[i].runs_on.length; l++){
                                 if(getDayName(userData.date)===allTrains[i].runs_on[l]){
                                     availaibleTrains.push(allTrains[i]);
+                                    createCard(allTrains[i],allTrains[i].schedule[j].station_code,allTrains[i].schedule[k].station_code,allTrains[i].schedule[j].time,allTrains[i].schedule[k].time,getDayName(userData.date));
+                                    let pricePerPerson = allTrains[i].schedule[k].distance - allTrains[i].schedule[j].distance;
+                                    pricePerPerson *= allTrains[i].price_per_km;
+                                    if(pricePerPerson < 0){
+                                        pricePerPerson *= -1;
+                                    }
                                 }
                             }
                         }
@@ -51,71 +59,61 @@ function displayTrains(){
                             for(let l=0; l<allTrains[i].runs_on.length; l++){
                                 if(getDayName(userData.date)===allTrains[i].runs_on[l]){
                                     availaibleTrains.push(allTrains[i]);
+                                    //details i need from this>>
+                                    //1)dist cost
+                                    //2)time from and to
+                                    //3)distance
+                                    //4)both time end and start
+                                    let pricePerPerson = allTrains[i].schedule[k].distance - allTrains[i].schedule[j].distance;
+                                    pricePerPerson *= allTrains[i].price_per_km;
+                                    if(pricePerPerson < 0){
+                                        pricePerPerson *= -1;
+                                    }
+                                    createCard(allTrains[i],allTrains[i].schedule[k].station_code,allTrains[i].schedule[j].station_code,allTrains[i].schedule[k].time,allTrains[i].schedule[j].time,allTrains[i].distance,getDayName(userData.date), pricePerPerson);
+                                    //next page >> what have: I from,to and date ;need: price per person,train id and train name
+                                    
                                 }
-                            }       
-                        } 
-                    }
+                                    
+                            }
+                        }       
+                    } 
                 }
             }
         }
     }
-    renderTrains();
 }
 
-function renderTrains(){
-    const trainList = document.getElementById('trainList');
-    const noResults = document.getElementById('noResults');
-    const userData = JSON.parse(localStorage.getItem("journeyAlpha"));
+function createTrainCard(allTrains,from,to,timeFrom,timeTo, day, price){
+    const trainCard = document.createElement("div");
+    trainCard.className = "trainCard";
 
-    document.getElementById('fromLabel').textContent = userData.from;
-    document.getElementById('toLabel').textContent = userData.to;
-    document.getElementById('dateLabel').textContent = userData.date;
-
-    if(availableTrains.length === 0){
-        noResults.style.display = 'block';
-        return;
-    }
-
-    trainList.innerHTML = availableTrains.map(train => {
-        const fromStop = train.schedule.find(s => s.station_code === userData.from);
-        const toStop = train.schedule.find(s => s.station_code === userData.to);
-        const dist = Math.abs(toStop.distance - fromStop.distance);
-        const price = Math.round(dist * train.price_per_km);
-
-        return `
-        <div class="trainCard">
-            <div class="cardTop">
-                <div class="trainIdBlock">
-                    <span class="trainNum">${train.train_id}</span>
-                    <span class="trainName">${train.train_name}</span>
-                </div>
-                <span class="runDays">${train.runs_on.join(' · ')}</span>
+    trainCard.innerHTML = `
+        <div class="trainCard-header">
+            <span class="trainCard-name">${allTrains.train_name}</span>
+            <span class="trainCard-code">${allTrains.train_number}</span>
+            <span class="trainCard-day">${day}</span>
+        </div>
+        <div class="trainCard-route">
+            <div class="trainCard-station">
+                <span class="trainCard-station-code">${from}</span>
+                <span class="trainCard-station-time">${timeFrom}</span>
             </div>
-            <div class="cardMid">
-                <div class="stationBlock">
-                    <span class="time">${fromStop.time}</span>
-                    <span class="stationCode">${fromStop.station_code}</span>
-                </div>
-                <div class="journeyLine">
-                    <span class="durationLabel">${dist} km</span>
-                    <div class="lineTrack">
-                        <div class="dot"></div>
-                        <div class="track"></div>
-                        <div class="arrowTip"></div>
-                    </div>
-                </div>
-                <div class="stationBlock right">
-                    <span class="time">${toStop.time}</span>
-                    <span class="stationCode">${toStop.station_code}</span>
-                </div>
+            <div class="trainCard-track"></div>
+            <div class="trainCard-station">
+                <span class="trainCard-station-code">${to}</span>
+                <span class="trainCard-station-time">${timeTo}</span>
             </div>
-            <div class="cardBottom">
-                <div class="priceBlock">
-                    <span class="priceLabel">FROM</span>
-                    <span class="priceValue">₹${price}</span>
-                </div>
-                <button class="bookBtn">Book Now</button>
+        </div>
+        <div class="trainCard-footer">
+            <span class="trainCard-duration"><i class="fa-regular fa-clock"></i> ${allTrains.duration || "--"}</span>
+            <div>
+                <span class="trainCard-price">₹${allTrains.price_per_km}<span>/km</span></span>
+                <span class="trainCard-price">₹${price}<span>/person</span></span>
             </div>
-        </div>`;
-    }).join('');
+            <button class="trainCard-book">Book Now</button>
+        </div>
+    `;
+
+    results.appendChild(trainCard);
+
 }

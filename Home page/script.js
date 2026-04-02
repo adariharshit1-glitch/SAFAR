@@ -69,10 +69,17 @@ document.addEventListener("DOMContentLoaded", () => {
     const submitBtn = document.getElementById("submitBtn");
     const dateInput = document.getElementById("journey-date");
     //convert user input to station code
+
+
+
     submitBtn.addEventListener("click", () => {
+        const extractCode = (str) => {
+        const match = str.match(/\(([^)]+)\)/);
+        return match ? match[1] : str;
+        };
         const userData = {
-            from: fromInput.value,
-            to: toInput.value,
+            from: extractCode(fromInput.value),
+            to: extractCode(toInput.value),
             date: dateInput.value
         };
 
