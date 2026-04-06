@@ -2,13 +2,18 @@
 <html>
 
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Seat Selection</title>
     <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
 </head>
 
 <body>
 
     <div class="main">
+        <h2 id="trainInfo" style="color: white; margin-bottom: 20px; text-shadow: 1px 1px 2px black;"></h2>
 
         <div class="left">
             <div class="classes">
@@ -22,14 +27,56 @@
             <div id="seatContainer"></div>
         </div>
 
-        <div class="right">
-            <p>Selected Seats:</p>
-            <p id="seatList">None</p>
+        <div class="right-panel">
+            <div class="info-card">
+                <h3 class="card-title">Train Details</h3>
+                <h4 id="train-name-display" style="color: #007bff; margin: 0 0 5px 0;"></h4>
+                <p id="train-num-display" style="color: #6c757d; font-size: 14px; margin: 0 0 15px 0;"></p>
+                <div class="route-display">
+                    <div class="route-point">
+                        <span id="route-from" style="font-weight: bold;"></span>
+                        <span id="route-from-time" style="color: #6c757d; font-size: 14px; display: block;"></span>
+                    </div>
+                    <div class="route-arrow"><i class="fa-solid fa-arrow-right"></i></div>
+                    <div class="route-point" style="text-align: right;">
+                        <span id="route-to" style="font-weight: bold;"></span>
+                        <span id="route-to-time" style="color: #6c757d; font-size: 14px; display: block;"></span>
+                    </div>
+                </div>
+                <p id="route-date" style="margin-top: 15px; color: #495057; font-size: 14px;"></p>
+            </div>
 
-            <p>Total Fare:</p>
-            <p>₹<span id="totalFare">0</span></p>
+            <div class="info-card">
+                <h3 class="card-title">Passenger Details</h3>
+                <p style="font-size: 14px; color: #6c757d; margin-top: 0;">Select seats on the left to add passengers.
+                </p>
+                <div id="passengerForms">
+                    <!-- Passenger inputs will be generated here -->
+                </div>
+            </div>
 
-            <button type="button" class="confirm" onclick="confirmBooking()">Continue</button>
+            <div class="info-card">
+                <h3 class="card-title">Fare Summary</h3>
+                <div style="display: flex; justify-content: space-between; margin-bottom: 10px;">
+                    <span id="fare-label" style="color: #495057;">Base fare</span>
+                    <span id="base-fare-display">₹0</span>
+                </div>
+                <div style="display: flex; justify-content: space-between; margin-bottom: 10px;">
+                    <span style="color: #495057;">Selected Class</span>
+                    <span id="summaryClass">Sleeper</span>
+                </div>
+                <div style="display: flex; justify-content: space-between; margin-bottom: 10px;">
+                    <span style="color: #495057;">Passengers</span>
+                    <span id="seatListSummary">None</span>
+                </div>
+                <hr style="border: 0; border-top: 1px solid #dee2e6; margin: 15px 0;">
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
+                    <span style="font-size: 18px; font-weight: bold;">Total Amount</span>
+                    <span style="font-size: 24px; font-weight: bold; color: orange;">₹<span
+                            id="totalFare">0</span></span>
+                </div>
+                <button type="button" class="confirm" onclick="confirmBooking()">Confirm Booking</button>
+            </div>
         </div>
 
         <div id="popup" class="popup">
@@ -38,6 +85,7 @@
                 <h2>Booking Confirmed!</h2>
 
                 <p id="popupSeats"></p>
+                <div id="popupPassengers" style="margin-bottom: 10px; font-weight: bold;"></div>
                 <p id="popupClass"></p>
                 <p id="popupFare"></p>
 

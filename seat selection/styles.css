@@ -1,34 +1,103 @@
 body {
     margin: 0;
-    padding-left: 40px;
     background: url("seatbg.jpg") no-repeat center;
     background-size: cover;
     background-attachment: fixed;
+    font-family: 'Poppins', sans-serif;
 }
 
 .main {
     display: flex;
-    gap: 40px;
-    width: fit-content;
-    margin-left: 40px;
-    margin-top: 40px;
+    gap: 60px;
+    align-items: flex-start;
+    max-width: 1200px;
+    margin: 40px auto;
+    padding: 0 40px;
 }
 
-.right {
-    position: sticky;
-    top: 200px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
-    background: rgba(0, 0, 0, 0.7);
+.right-panel {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    flex: 1;
+}
+
+.info-card {
+    background: #ffffff;
+    border-radius: 12px;
     padding: 20px;
-    color: white;
-
-    width: 300px;
-    height: fit-content;
+    box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+    border: 1px solid #e2e8f0;
+    color: #212529;
 }
 
-.right p {
+.card-title {
+    margin-top: 0;
+    margin-bottom: 15px;
     font-size: 18px;
-    margin: 10px 0;
+    color: #343a40;
+    font-weight: 600;
+}
+
+.route-display {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: #f8f9fa;
+    padding: 10px;
+    border-radius: 8px;
+}
+
+.route-arrow {
+    color: #adb5bd;
+}
+
+#trainInfo {
+    position: absolute;
+    top: -60px;
+    left: 0;
+    width: 100%;
+}
+
+.passenger-form {
+    background: #f8f9fa;
+    padding: 15px;
+    border-radius: 8px;
+    margin-bottom: 15px;
+    border: 1px solid #dee2e6;
+}
+
+.passenger-form p {
+    font-size: 14px;
+    color: #495057;
+    margin: 0 0 10px 0;
+    font-weight: bold;
+}
+
+.inputs-row {
+    display: flex;
+    gap: 15px;
+}
+
+.passenger-form input {
+    padding: 10px;
+    border: 1px solid #ced4da;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+.passenger-form input[type="text"] {
+    flex: 3;
+}
+
+.passenger-form input[type="number"] {
+    flex: 1;
+}
+
+.passenger-form input:focus {
+    outline: none;
+    border-color: #80bdff;
+    box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, .25);
 }
 
 .classes {
@@ -151,41 +220,108 @@ body {
 }
 
 @media (max-width: 768px) {
+    .main {
+        flex-direction: column;
+        gap: 20px;
+        padding: 15px;
+        margin: 10px auto;
+        align-items: stretch;
+        width: 100%;
+        box-sizing: border-box;
+    }
+
+    .left {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: 100%;
+        background: #ffffff;
+        border-radius: 12px;
+        padding: 20px 10px;
+        box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -2px rgba(0, 0, 0, 0.05);
+        box-sizing: border-box;
+    }
+
+    #seatContainer {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: 100%;
+        overflow-x: auto;
+        padding-bottom: 10px;
+    }
+
+    .right-panel {
+        width: 100%;
+        flex: auto;
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+    }
+
+    .info-card {
+        width: 100%;
+        box-sizing: border-box;
+        padding: 20px 15px;
+    }
 
     .classes {
         display: flex;
         flex-wrap: wrap;
-        gap: 10px;
+        gap: 8px;
+        justify-content: center;
+        margin-bottom: 20px;
     }
 
     .classes button {
-        flex: 1 1 45%;
+        flex: 1 1 40%;
+        margin: 0;
+        padding: 10px 15px;
+        border-radius: 20px;
+        border: none;
+        background: #f1f5f9;
+        font-size: 13px;
+        font-weight: 500;
+        color: #334155;
+    }
+
+    .classes button:hover,
+    .classes button.active {
+        background: #ff9800;
+        color: white;
     }
 
     .seat {
-        width: 32px;
-        height: 32px;
+        width: 34px;
+        height: 34px;
         margin: 4px;
         font-size: 12px;
+        border-radius: 6px;
     }
 
-    .right {
-        font-size: 14px;
-        padding: 15px;
+    .inputs-row {
+        flex-direction: column;
+        gap: 12px;
+    }
+
+    .passenger-form input[type="text"],
+    .passenger-form input[type="number"] {
+        flex: none;
+        width: 100%;
     }
 
     .popup-content {
-        width: 90%;
+        width: 95%;
+        padding: 20px;
     }
 }
 
 @media (max-width: 480px) {
-
     .seat {
-        width: 28px;
-        height: 28px;
+        width: 30px;
+        height: 30px;
         margin: 3px;
-        font-size: 10px;
+        font-size: 11px;
     }
 
     .classes button {
@@ -193,11 +329,9 @@ body {
     }
 
     .confirm {
-        font-size: 14px;
-        padding: 10px;
-    }
-
-    .right p {
-        font-size: 14px;
+        font-size: 16px;
+        padding: 14px;
+        width: 100%;
+        border-radius: 8px;
     }
 }

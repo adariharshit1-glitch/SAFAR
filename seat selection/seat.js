@@ -5,10 +5,26 @@ let selectedClass = "Sleeper"; // default class
 const data = JSON.parse(localStorage.getItem("selectedTrain"));
 const searchData = JSON.parse(localStorage.getItem("searchData"));
 
-document.getElementById("trainInfo").innerText =
-    data.train.train_name + " (" + searchData.from + " → " + searchData.to + ")";
+if (data && searchData) {
+    document.getElementById("trainInfo").innerText = "Seat Selection";
 
-baseFare = data.fare;
+    // Populate layout refs
+    document.getElementById("train-name-display").innerText = data.train.train_name;
+    document.getElementById("train-num-display").innerText = "Train #" + data.train.train_id;
+    document.getElementById("route-from").innerText = searchData.fromName || searchData.from;
+    document.getElementById("route-from-time").innerText = data.fromTime || "00:00";
+    document.getElementById("route-to").innerText = searchData.toName || searchData.to;
+    document.getElementById("route-to-time").innerText = data.toTime || "00:00";
+    document.getElementById("route-date").innerText = searchData.date;
+    document.getElementById("base-fare-display").innerText = "₹" + data.fare;
+
+    baseFare = data.fare;
+
+    // Initialize default class and UI which also updates the summary properly
+    selectClass(selectedClass);
+} else {
+    document.getElementById("trainInfo").innerText = "Seat Selection";
+}
 
 function generateSeats(rows, cols) {
     const container = document.getElementById("seatContainer");
@@ -68,9 +84,27 @@ function toggleSeat(seat) {
         });
 
         seat.classList.remove("selected");
+        const formRow = document.getElementById("pass-form-" + num);
+        if (formRow) {
+            formRow.remove();
+        }
+
     } else {
         selectedSeats.push(num);
         seat.classList.add("selected");
+
+        const passengerForms = document.getElementById("passengerForms");
+        const formDiv = document.createElement("div");
+        formDiv.className = "passenger-form";
+        formDiv.id = "pass-form-" + num;
+        formDiv.innerHTML = `
+            <p>Passenger for Seat ${num}</p>
+            <div class="inputs-row">
+                <input type="text" id="pass-name-${num}" placeholder="Full Name">
+                <input type="number" id="pass-age-${num}" placeholder="Age" min="1" max="120">
+            </div>
+        `;
+        passengerForms.appendChild(formDiv);
     }
 
     updateSummary();
@@ -96,15 +130,19 @@ function updateSummary() {
         multiplier = 4.5;
     }
 
-    let finalFare = baseFare * multiplier;
+    let finalFare = Math.round(baseFare * multiplier);
 
     if (selectedSeats.length === 0) {
-        document.getElementById("seatList").innerText = "None";
+        document.getElementById("seatListSummary").innerText = "None";
     } else {
-        document.getElementById("seatList").innerText = selectedSeats.join(", ");
+        document.getElementById("seatListSummary").innerText = selectedSeats.length + " (" + selectedSeats.join(", ") + ")";
     }
-    document.getElementById("totalFare").innerText =
-        finalFare * selectedSeats.length;
+
+    // Update base fare display so the math makes sense for the user
+    document.getElementById("fare-label").innerText = selectedClass + " fare";
+    document.getElementById("base-fare-display").innerText = "₹" + finalFare;
+    document.getElementById("summaryClass").innerText = selectedClass;
+    document.getElementById("totalFare").innerText = finalFare * selectedSeats.length;
 }
 
 function confirmBooking() {
@@ -114,8 +152,27 @@ function confirmBooking() {
         return;
     }
 
+    let passengersText = "";
+    let allFilled = true;
+
+    selectedSeats.forEach(num => {
+        const nameInput = document.getElementById("pass-name-" + num);
+        const ageInput = document.getElementById("pass-age-" + num);
+        if (!nameInput.value.trim() || !ageInput.value.trim()) {
+            allFilled = false;
+        }
+        passengersText += `Seat ${num}: ${nameInput.value.trim()} (${ageInput.value.trim()})<br>`;
+    });
+
+    if (!allFilled) {
+        alert("Please fill in all passenger details.");
+        return;
+    }
+
     document.getElementById("popupSeats").innerText =
         "Seats: " + selectedSeats.join(", ");
+
+    document.getElementById("popupPassengers").innerHTML = passengersText;
 
     document.getElementById("popupClass").innerText =
         "Class: " + selectedClass;

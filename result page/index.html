@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trains Results - SAFAR</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <nav class="navbar">
+        <h2 class="logo"><i class="fa-solid fa-train"
+                style="background: #ff9800; color: white; padding: 4px; border-radius: 4px;"></i> SAFAR</h2>
+        <div class="nav-right">
+            <a href="../Home page/index.html" class="nav-home">Home</a>
+            <a href="../login page/login.html" class="nav-login"><i class="fa-regular fa-user"></i> Login</a>
+        </div>
+    </nav>
+
+    <main class="results-main">
+        <div class="back-nav">
+            <a href="../Home page/index.html" class="back-link"><i class="fa-solid fa-arrow-left"
+                    style="font-size: 12px;"></i> Back to search</a>
+        </div>
+        <div class="search-header">
+            <h1><span id="from-name"></span> <i class="fa-solid fa-arrow-right highlight-arrow"></i> <span
+                    id="to-name"></span></h1>
+            <p id="search-date-display"></p>
+        </div>
+
+        <div class="sort-filter-container" id="sort-filter-container" style="display: none;">
+            <label for="sortOptions"><i class="fa-solid fa-sort"></i> Sort By:</label>
+            <select id="sortOptions" class="sort-select">
+                <option value="default">Relevance (Default)</option>
+                <option value="priceAsc">Price: Low to High</option>
+                <option value="priceDesc">Price: High to Low</option>
+                <option value="durationAsc">Duration: Shortest to Longest</option>
+                <option value="durationDesc">Duration: Longest to Shortest</option>
+            </select>
+        </div>
+
+        <div class="results-container" id="results-container">
+            <!-- Train cards injected here -->
+        </div>
+
+        <div id="no-results" class="no-results" style="display: none;">
+            <i class="fa-solid fa-triangle-exclamation fa-3x"></i>
+            <h3>No trains found</h3>
+            <p>Try searching for a different route or date.</p>
+            <a href="../Home page/index.html"><button class="btn">Go Back</button></a>
+        </div>
+    </main>
+
+    <script src="script.js"></script>
+    </body>
+
+</html>

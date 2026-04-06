@@ -66,4 +66,37 @@ document.addEventListener("DOMContentLoaded", () => {
 
     autocomplete(fromInput, "from-autocomplete-list");
     autocomplete(toInput, "to-autocomplete-list");
+
+    const searchSubmit = document.getElementById("search-submit");
+    const journeyDate = document.getElementById("journey-date");
+
+    searchSubmit.addEventListener("click", () => {
+        const fromVal = fromInput.value;
+        const toVal = toInput.value;
+        const dateVal = journeyDate.value;
+
+        if (!fromVal || !toVal || !dateVal) {
+            alert("Please fill all fields: From, To, and Date.");
+            return;
+        }
+
+        const extractCode = (str) => {
+            const match = str.match(/\(([^)]+)\)/);
+            return match ? match[1] : str;
+        };
+
+        const fromCode = extractCode(fromVal);
+        const toCode = extractCode(toVal);
+
+        const searchData = {
+            from: fromCode,
+            fromName: fromVal.split(" (")[0],
+            to: toCode,
+            toName: toVal.split(" (")[0],
+            date: dateVal
+        };
+
+        localStorage.setItem("searchData", JSON.stringify(searchData));
+        window.location.href = "../result page/index.html";
+    });
 });
